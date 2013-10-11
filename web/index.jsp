@@ -4,6 +4,7 @@
     Author     : alumno
 --%>
 
+<%@page import="com.fpmislata.banco.datos.EntidadBancariaDAOImplJDBC"%>
 <%@page import="java.util.List"%>
 <%@page import="com.fpmislata.banco.datos.EntidadBancariaDAO"%>
 <%@page import="com.fpmislata.banco.negocio.EntidadBancaria"%>
@@ -11,7 +12,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
-    EntidadBancariaDAO entidadBancariaDAO = new EntidadBancariaDAO();
+    EntidadBancariaDAO entidadBancariaDAO = new EntidadBancariaDAOImplJDBC();
     List<EntidadBancaria> entidadesBancarias = entidadBancariaDAO.findAll();
 %>
 
