@@ -178,24 +178,29 @@ public class EntidadBancariaDAOImplJDBC implements EntidadBancariaDAO {
         try {
             Connection connection = connectionFactory.getConnection();
             List<EntidadBancaria> entidadesBancarias = new ArrayList<>();
+            
 
-            String selectSQL = "SELECT idEntidad, codigoEntidad, nombre, cif, tipoEntidadBancaria FROM entidadbancaria WHERE nombre LIKE ? ";
-            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
-            preparedStatement.setString(1,"%"+nombre+"%");
-            ResultSet resultSet = preparedStatement.executeQuery();
+            if (nombre == null || nombre.trim().equals("")) {
+                entidadesBancarias = findAll();
+            } else {
+                String selectSQL = "SELECT idEntidad, codigoEntidad, nombre, cif, tipoEntidadBancaria FROM entidadbancaria WHERE nombre LIKE ? ";
+                PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+                preparedStatement.setString(1, "%" + nombre + "%");
+                ResultSet resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next() == true) {
-                EntidadBancaria entidadBancaria = new EntidadBancaria();
-                entidadBancaria.setIdEntidadBancaria(resultSet.getInt("idEntidad"));
-                entidadBancaria.setCodigoEntidad(resultSet.getString("codigoEntidad"));
-                entidadBancaria.setNombre(resultSet.getString("nombre"));
-                entidadBancaria.setCif(resultSet.getString("cif"));
-                String tipoEntidadBancaria = resultSet.getString("tipoEntidadBancaria");
-                entidadBancaria.setTipoEntidadBancaria(TipoEntidadBancaria.valueOf(tipoEntidadBancaria));
-                entidadesBancarias.add(entidadBancaria);
-
+                while (resultSet.next() == true) {
+                    EntidadBancaria entidadBancaria = new EntidadBancaria();
+                    entidadBancaria.setIdEntidadBancaria(resultSet.getInt("idEntidad"));
+                    entidadBancaria.setCodigoEntidad(resultSet.getString("codigoEntidad"));
+                    entidadBancaria.setNombre(resultSet.getString("nombre"));
+                    entidadBancaria.setCif(resultSet.getString("cif"));
+                    String tipoEntidadBancaria = resultSet.getString("tipoEntidadBancaria");
+                    entidadBancaria.setTipoEntidadBancaria(TipoEntidadBancaria.valueOf(tipoEntidadBancaria));
+                    entidadesBancarias.add(entidadBancaria);
+                }
+                connection.close();
             }
-            connection.close();
+
             return entidadesBancarias;
         } catch (Exception ex) {
             throw new RuntimeException("Fallo", ex);

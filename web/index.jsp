@@ -15,7 +15,7 @@
     String nombre = request.getParameter("nombre");
     EntidadBancariaDAO entidadBancariaDAO = new EntidadBancariaDAOImplJDBC();
     List<EntidadBancaria> entidadesBancarias = entidadBancariaDAO.findByNombre(nombre);
-    
+
 %>
 
 <!DOCTYPE html>
@@ -27,6 +27,11 @@
         <link href="css/bootstrap-responsive.css" rel="stylesheet" media="screen">
     </head>
     <body>
+        <form action="index.jsp" style="margin: 10px;">
+            <b>Nombre entidad:</b>
+            <input type="text" name="nombre" class="input-medium search-query" />
+            <input type="submit" value="Consulta" class="btn btn-warning"/>
+        </form>
         <table class="table table-bordered">
             <tr class="info" style="font-weight: bold;">
                 <td>ID</td><td>CODIGO</td><td>NOMBRE ENTIDAD</td><td>CIF</td><td>TIPO ENTIDAD</td>
