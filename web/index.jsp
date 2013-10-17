@@ -12,8 +12,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
+    String nombre = request.getParameter("nombre");
     EntidadBancariaDAO entidadBancariaDAO = new EntidadBancariaDAOImplJDBC();
-    List<EntidadBancaria> entidadesBancarias = entidadBancariaDAO.findAll();
+    List<EntidadBancaria> entidadesBancarias = entidadBancariaDAO.findByNombre(nombre);
+    
 %>
 
 <!DOCTYPE html>
