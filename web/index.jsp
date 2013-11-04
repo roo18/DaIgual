@@ -4,6 +4,7 @@
     Author     : alumno
 --%>
 
+<%@page import="com.fpmislata.banco.datos.EntidadBancariaDAOImplHibernate"%>
 <%@page import="com.fpmislata.banco.datos.EntidadBancariaDAOImplJDBC"%>
 <%@page import="java.util.List"%>
 <%@page import="com.fpmislata.banco.datos.EntidadBancariaDAO"%>
@@ -13,7 +14,7 @@
 
 <%
     String nombre = request.getParameter("nombre");
-    EntidadBancariaDAO entidadBancariaDAO = new EntidadBancariaDAOImplJDBC();
+    EntidadBancariaDAO entidadBancariaDAO = new EntidadBancariaDAOImplHibernate();
     List<EntidadBancaria> entidadesBancarias = entidadBancariaDAO.findByNombre(nombre);
 
 %>
@@ -26,7 +27,7 @@
         <link href="css/bootstrap.css" rel="stylesheet" media="screen">
         <link href="css/bootstrap-responsive.css" rel="stylesheet" media="screen">
     </head>
-    <body>
+    <body style="background-color: ghostwhite">
         <form action="index.jsp" style="margin: 10px;">
             <b>Nombre entidad:</b>
             <input type="text" name="nombre" class="input-medium search-query" />
