@@ -28,6 +28,8 @@
         <link href="css/bootstrap-responsive.css" rel="stylesheet" media="screen">
     </head>
     <body style="background-color: ghostwhite">
+        
+        <a href="nuevo.jsp" ><input type="button" value="Nuevo" class="btn btn-primary" /></a>
         <form action="index.jsp" style="margin: 10px;">
             <b>Nombre entidad:</b>
             <input type="text" name="nombre" class="input-medium search-query" />
