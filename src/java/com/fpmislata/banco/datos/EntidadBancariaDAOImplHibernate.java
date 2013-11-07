@@ -33,9 +33,16 @@ public class EntidadBancariaDAOImplHibernate extends GenericDAOImplHibernate<Ent
     @Override
     public List<EntidadBancaria> findByNombre(String nombre) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("SELECT eb FROM EntidadBancaria eb WHERE nombre= ?");
-        query.setString(0, nombre);
-        List<EntidadBancaria> entidadesBancarias = query.list();
+        List<EntidadBancaria> entidadesBancarias;
+
+        if (nombre == null || nombre.trim().equals("")) {
+            entidadesBancarias = findAll();
+        } else {
+            Query query = session.createQuery("SELECT eb FROM EntidadBancaria eb WHERE nombre LIKE  ?");
+            query.setString(0, "%" + nombre + "%");
+            entidadesBancarias = query.list();
+
+        }
         return entidadesBancarias;
     }
 }

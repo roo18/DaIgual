@@ -35,7 +35,7 @@
         </form>
         <table class="table table-bordered">
             <tr class="info" style="font-weight: bold;">
-                <td>ID</td><td>CODIGO</td><td>NOMBRE ENTIDAD</td><td>CIF</td><td>TIPO ENTIDAD</td>
+                <td>ID</td><td>CODIGO</td><td>NOMBRE ENTIDAD</td><td>CIF</td><td>TIPO ENTIDAD</td><td>BORRAR</td>
             </tr>
             <%    for (EntidadBancaria entidadBancaria : entidadesBancarias) {%>
             <tr class="warning">
@@ -44,6 +44,7 @@
                 <td><%=entidadBancaria.getNombre()%></td>
                 <td><%=entidadBancaria.getCif()%></td>
                 <td><%=entidadBancaria.getTipoEntidadBancaria()%></td>
+                <td><a href="borrar.jsp?idEntidadBancaria=<%=entidadBancaria.getIdEntidadBancaria()%>">Borrar Entidad</a></td>
             </tr>
 
             <% }
