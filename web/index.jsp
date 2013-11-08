@@ -28,8 +28,10 @@
         <link href="css/bootstrap-responsive.css" rel="stylesheet" media="screen">
     </head>
     <body style="background-color: ghostwhite">
-        
-        <a href="nuevo.jsp" ><input type="button" value="Nuevo" class="btn btn-primary" /></a>
+        <div id="insertar" style="margin: 10px;">
+            <b>Insertar nueva Entidad Bancaria: </b>
+            <a href="viewforinsert.jsp" ><input type="button" value="Nueva" class="btn btn-primary" /></a>
+        </div>
         <form action="index.jsp" style="margin: 10px;">
             <b>Nombre entidad:</b>
             <input type="text" name="nombre" class="input-medium search-query" />
@@ -37,7 +39,7 @@
         </form>
         <table class="table table-bordered">
             <tr class="info" style="font-weight: bold;">
-                <td>ID</td><td>CODIGO</td><td>NOMBRE ENTIDAD</td><td>CIF</td><td>TIPO ENTIDAD</td><td>BORRAR</td>
+                <td>ID</td><td>CODIGO</td><td>NOMBRE ENTIDAD</td><td>CIF</td><td>TIPO ENTIDAD</td><td>BORRAR</td><td>EDITAR</td>
             </tr>
             <%    for (EntidadBancaria entidadBancaria : entidadesBancarias) {%>
             <tr class="warning">
@@ -46,7 +48,12 @@
                 <td><%=entidadBancaria.getNombre()%></td>
                 <td><%=entidadBancaria.getCif()%></td>
                 <td><%=entidadBancaria.getTipoEntidadBancaria()%></td>
-                <td><a href="borrar.jsp?idEntidadBancaria=<%=entidadBancaria.getIdEntidadBancaria()%>">Borrar Entidad</a></td>
+                <td style="width: 50px;">
+                    <a href="borrar.jsp?idEntidadBancaria=<%=entidadBancaria.getIdEntidadBancaria()%>"><i class="icon-remove"></i></a>  
+                </td>
+                <td style="width: 50px;">
+                    <a href="viewforupdate.jsp?idEntidadBancaria=<%=entidadBancaria.getIdEntidadBancaria()%>"><i class="icon-edit"></i></a>
+                </td>
             </tr>
 
             <% }
