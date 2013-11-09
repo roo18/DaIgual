@@ -4,6 +4,7 @@
     Author     : alumno
 --%>
 
+<%@page import="com.fpmislata.banco.negocio.TipoEntidadBancaria"%>
 <%@page import="com.fpmislata.banco.negocio.EntidadBancaria"%>
 <%@page import="com.fpmislata.banco.datos.EntidadBancariaDAOImplHibernate"%>
 <%@page import="com.fpmislata.banco.datos.EntidadBancariaDAO"%>
@@ -13,6 +14,8 @@
     
     EntidadBancariaDAO entidadBancariaDAO = new EntidadBancariaDAOImplHibernate();
     EntidadBancaria entidadBancaria = entidadBancariaDAO.read(idEntidadBancaria);
+    
+    TipoEntidadBancaria tipoEntidadBancaria = entidadBancaria.getTipoEntidadBancaria();
 %>
 <!DOCTYPE html>
 <html>
@@ -53,10 +56,10 @@
                 <label class="control-label" for="cifEntidadBancaria">Tipo Entidad:</label>
                 <div class="controls">
                     <select name="tipoEntidadBancaria" id="tipoEntidadBancaria">
-                        <option value="BANCO">BANCO</option>
-                        <option value="CAJADEAHORRO">CAJA DE AHORROS</option>
-                        <option value="COOPERATIVASDECREDITO">COOPERATIVA DE CREDITO</option>
-                        <option value="ESTABLECIMIENTOSFINACIEROSDECREDITO">ESTABLECIMIENTOS FINANCIEROS DE CREDITO</option>                
+                        <option value="BANCO" <% if(tipoEntidadBancaria == TipoEntidadBancaria.BANCO){out.print("selected");} %> >BANCO</option>
+                        <option value="CAJADEAHORRO" <% if(tipoEntidadBancaria == TipoEntidadBancaria.CAJADEAHORRO){out.print("selected");} %> >CAJA DE AHORROS</option>
+                        <option value="COOPERATIVASDECREDITO" <% if(tipoEntidadBancaria == TipoEntidadBancaria.COOPERATIVASDECREDITO){out.print("selected");} %> >COOPERATIVA DE CREDITO</option>
+                        <option value="ESTABLECIMIENTOSFINACIEROSDECREDITO" <% if(tipoEntidadBancaria == TipoEntidadBancaria.ESTABLECIMIENTOSFINACIEROSDECREDITO){out.print("selected");} %> >ESTABLECIMIENTOS FINANCIEROS DE CREDITO</option>                
                     </select>
                 </div>
             </div>

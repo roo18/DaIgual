@@ -14,13 +14,14 @@
     String codigoEntidadBancaria = request.getParameter("codigoEntidadBancaria");
     String nombreEntidadBancaria = request.getParameter("nombreEntidadBancaria");
     String cifEntidadBancaria = request.getParameter("cifEntidadBancaria");
+    TipoEntidadBancaria tipoEntidadBancaria = TipoEntidadBancaria.valueOf(request.getParameter("tipoEntidadBancaria"));
     
         EntidadBancaria entidadBancaria = new EntidadBancaria();
         entidadBancaria.setIdEntidadBancaria(idEntidadBancaria);
         entidadBancaria.setCodigoEntidad(codigoEntidadBancaria);
         entidadBancaria.setNombre(nombreEntidadBancaria);
         entidadBancaria.setCif(cifEntidadBancaria);
-        entidadBancaria.setTipoEntidadBancaria(TipoEntidadBancaria.BANCO);
+        entidadBancaria.setTipoEntidadBancaria(tipoEntidadBancaria);
         
     EntidadBancariaDAO entidadBancariaDAO = new EntidadBancariaDAOImplHibernate();
     entidadBancariaDAO.update(entidadBancaria);
