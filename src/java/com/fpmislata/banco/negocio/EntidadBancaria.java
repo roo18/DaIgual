@@ -22,7 +22,7 @@ public class EntidadBancaria {
 
     public EntidadBancaria() {
         nombre="Banco de";
-        tipoEntidadBancaria=TipoEntidadBancaria.BANCO;
+        tipoEntidadBancaria=TipoEntidadBancaria.COOPERATIVASDECREDITO;
     }
 
     public EntidadBancaria(int idEntidadBancaria, String codigoEntidad, String nombre, String cif, TipoEntidadBancaria entidad) {

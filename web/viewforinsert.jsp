@@ -77,7 +77,7 @@
             </div>
             <div class="control-group">
                 <div class="controls">
-                    <button type="submit" class="btn btn-danger">Insertar</button>
+                    <button type="submit" class="btn btn-success">Insertar</button>
                 </div>
             </div>
         </form>
